@@ -1,5 +1,4 @@
 import { ApolloServer } from "apollo-server-express"
-import { startStandaloneServer } from "@apollo/server/standalone"
 import express from "express"
 
 const app = express()
@@ -126,7 +125,8 @@ server.applyMiddleware({ app: app })
 // console.log(`🚀  Server ready at: ${url}`)
 
 // { port: process.env.PORT || 4000 }
+const port = process.env.PORT || 4000
 
-app.listen(4000, () => {
+app.listen(port, () => {
   console.log(`🚀 Server ready`)
 })
