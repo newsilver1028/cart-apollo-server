@@ -1,5 +1,7 @@
 import { ApolloServer } from "apollo-server-express"
 import express from "express"
+import http from "http"
+import cors from "cors"
 
 const app = express()
 
@@ -127,6 +129,8 @@ server.applyMiddleware({ app: app })
 // { port: process.env.PORT || 4000 }
 
 const port = process.env.PORT || 4000
+
+app.use(cors())
 
 app.listen(port, () => {
   console.log(`🚀 Server ready`)
