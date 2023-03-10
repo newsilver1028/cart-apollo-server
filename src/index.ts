@@ -1,5 +1,7 @@
-import { ApolloServer } from "@apollo/server"
-import { startStandaloneServer } from "@apollo/server/standalone"
+import { ApolloServer } from "apollo-server-express"
+import express from "express"
+
+const app = express()
 
 // A schema is a collection of type definitions (hence "typeDefs")
 // that together define the "shape" of queries that are executed against
@@ -107,6 +109,8 @@ const server = new ApolloServer({
   resolvers,
 })
 
+server.applyMiddleware({ app, path: "/api" })
+
 // Passing an ApolloServer instance to the `startStandaloneServer` function:
 //  1. creates an Express app
 //  2. installs your ApolloServer instance as middleware
@@ -115,9 +119,6 @@ const server = new ApolloServer({
 //   listen: { port: 4000 },
 // })
 
-const startApolloServer = async (server) => {
-  const { url } = await server.listen({ port: process.env.PORT || 4000 })
-  console.log(`🚀 Server ready at ${url}`)
-}
-
-startApolloServer(server)
+app.listen({ port: process.env.PORT || 4000 }, () => {
+  console.log(`🚀 Server ready`)
+})
