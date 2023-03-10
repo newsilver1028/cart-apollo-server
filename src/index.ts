@@ -107,6 +107,7 @@ const resolvers = {
 const server = new ApolloServer({
   typeDefs,
   resolvers,
+  cache: "bounded",
 })
 
 server.applyMiddleware({ app: app })
