@@ -109,7 +109,7 @@ const server = new ApolloServer({
   resolvers,
 })
 
-server.applyMiddleware({ app, path: "/api" })
+server.applyMiddleware({ app: app })
 
 // Passing an ApolloServer instance to the `startStandaloneServer` function:
 //  1. creates an Express app
