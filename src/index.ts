@@ -127,6 +127,11 @@ server.applyMiddleware({ app: app })
 // { port: process.env.PORT || 4000 }
 const port = process.env.PORT || 4000
 
+app.get("/", (req, res) => {
+  console.log(req)
+  res.send("hi")
+})
+
 app.listen(port, () => {
   console.log(`🚀 Server ready`)
 })
