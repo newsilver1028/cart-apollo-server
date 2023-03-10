@@ -110,7 +110,7 @@ const server = new ApolloServer({
   cache: "bounded",
 })
 
-server.applyMiddleware({ app: app })
+await server.start()
 
 // Passing an ApolloServer instance to the `startStandaloneServer` function:
 //  1. creates an Express app
